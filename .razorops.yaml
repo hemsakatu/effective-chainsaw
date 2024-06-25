@@ -1,0 +1,9 @@
+tasks:
+  run-test:
+    #
+    steps:
+    - checkout
+    
+        
+    - run: npm install
+    - run: npm run start
