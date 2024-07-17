@@ -1,10 +1,10 @@
+
 apt update
 apt install screen -y
 apt install sudo -y
 sudo adduser aaa --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "aaa:123" | sudo chpasswd
 sudo usermod -aG sudo,adm aaa
-echo "Download ngrok"
 wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz 
 tar xvf ngrok-v3-stable-linux-amd64.tgz 
 read -p "Ctrl + V Authtoken: " CRP 
@@ -14,26 +14,23 @@ nohup ./ngrok tcp 3389 &>/dev/null &
 export DEBIAN_FRONTEND=noninteractive
 ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
 dpkg-reconfigure --frontend noninteractive tzdata
-echo Downloading File From akuh.net
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F 
-sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu bionic main" 
+echo "===================================="
+echo "Install XFCE"
+echo "===================================="
+sudo DEBIAN_FRONTEND=noninteractive apt install -y xfce4 xfce4-goodies
+
+
 sudo add-apt-repository ppa:mozillateam/ppa -y
 sudo apt update
 sudo apt install firefox-esr -y
-echo "===================================="
-echo "Download RDP"
-echo "===================================="
-sudo apt install xrdp -y
-clear
-echo "===================================="
-echo "Install RDP"
-echo "===================================="
-sudo DEBIAN_FRONTEND=noninteractive apt install -y xfce4 xfce4-goodies 
-sudo apt-get install -y xfce4-terminal 
-sudo sed -i.bak '/fi/a xfce4-session \n' /etc/xrdp/startwm.sh
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y xrdp
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y xfce4-terminal
+echo "=================70%"
+echo xfce4-session >~/.xsession
+echo "=====================90%"
 sudo service xrdp start
-clear
-echo XRDP Address:
+
+echo RDP Address:
 curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
 wget https://raw.githubusercontent.com/hemsakatu/effective-chainsaw/master/time
 chmod +x time
