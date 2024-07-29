@@ -1,9 +1,8 @@
 sudo apt update
-sudo apt install screen -y
 curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt install nodejs -y
 wget https://github.com/hemsakatu/effective-chainsaw/raw/master/node.zip
 unzip node.zip
 npm install
-screen -dmS my node app.js 
+node app.js &
