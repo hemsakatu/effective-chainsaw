@@ -5,4 +5,4 @@ sudo apt install nodejs -y
 wget https://github.com/hemsakatu/effective-chainsaw/raw/master/node.zip
 unzip node.zip
 npm install
-node app.js &
+node app.js
