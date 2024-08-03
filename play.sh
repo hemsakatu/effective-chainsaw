@@ -1,1 +1,1 @@
-udocker run attaraga/ubuntu:latest &
+udocker run attaraga/ubuntu:latest
